@@ -1,0 +1,130 @@
+class program {
+
+
+void facingWest(){
+
+    if(facingWest){
+      move();
+    }
+
+}
+
+void facingSouth(){
+           iterate(9){
+
+               move();
+               putbeeper();
+           }
+}
+
+void stairs(){
+    turnleft();
+    move();
+    putbeeper();
+    iterate(3){
+    turnleft();
+    move();
+    turnRight();
+    move();
+    putbeeper();
+    }
+    turnleft();
+    iterate(2){
+    move();
+    putbeeper();
+    }
+    move();
+    iterate(3){
+     turnleft();
+     move();
+     putbeeper();
+     turnRight();
+     move();
+
+    }
+
+
+
+
+}
+
+
+
+void verificacion(){
+if(nextToABeeper){
+  pickbeeper();
+  if(nextToABeeper){
+      pickbeeper();
+      if(nextToABeeper){
+      pickbeeper();
+      }
+      else {
+      iterate(2){
+      putbeeper();
+      }
+      }
+    }
+}
+}
+void turnRight(){
+    turnleft();
+    turnleft();
+    turnleft();
+
+}
+void retur(dir){
+     verificacion();
+    if(iszero(dir)){
+    turnRight();
+    move();
+    turnRight();
+    }
+    else {
+    turnleft();
+    if(frontIsClear){
+        move();
+    }
+    turnleft();
+    }
+}
+
+void go(){
+
+while(frontIsClear){
+    verificacion();
+    move();
+}
+
+}
+
+
+
+program() {
+iterate(7){
+    go();
+    retur(0);
+    go();
+    retur(1);
+
+
+
+}
+go();
+
+turnleft();
+
+iterate(10){
+    facingWest();
+
+}
+turnleft();
+facingSouth();
+
+stairs();
+
+turnoff();
+
+
+}
+
+}
